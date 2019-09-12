@@ -11,7 +11,7 @@ void read_file(void) {
         exit(1);
     }
 
-    short numLetters[26];
+    short numLetters[26] = {0};
 
     do {            
         // In
@@ -23,32 +23,20 @@ void read_file(void) {
         if (feof(fptr)) // Needs to be after fgetc() because that method will move the pointer to the next memory location
             break ; // Breaks us from the while loop
 
-        // 1. prints the char's numeric value according to ASCII
-        // 2. prints the actual char character
-        //printf("%d == %c\n", c,c); 
-
     } while (1);    // Infinite true loop
         
-    fclose(fptr);
-    
- //printf("Number of letters in document: a:%d e:%d", numLetters[0], numLetters[1]);
+    fclose(fptr);    
 
-    for (int i = 97; i <= 122; i++ ) {
-        printf("%c:%d", numLetters[i]);
+    for (int i = 0; i <= 25; i++ ) {
+        // (i + 97) is an offset for displaying character
+        printf("%c:%d ", (i + 97), numLetters[i]);
     }
 
-    //printf("a occurred: %d", numLetters[0]);
     printf("\nFile has been read.");
 }
 
-void Count_Char_Instances(const char* letter, short* letterArray) {    
-    
-    //printf("%c", letter);
-    
-    // Add code to identify char numeric ascii values
-    // Also need to add or create a toLower or toUpper function
-
-    //printf("%i", (int)letter);
+void Count_Char_Instances(const char letter, short* letterArray) {    
+        
     switch ((unsigned int)letter)
     {
     case 97: // a
@@ -90,11 +78,47 @@ void Count_Char_Instances(const char* letter, short* letterArray) {
     case 109: // m
         letterArray[12] += 1;
         break;
-    case 110: // j
+    case 110: // n
         letterArray[13] += 1;
         break;
+    case 111: // o
+        letterArray[14] += 1;
+        break;
+    case 112: // p
+        letterArray[15] += 1;
+        break;
+    case 113: // q
+        letterArray[16] += 1;
+        break;
+    case 114: // r
+        letterArray[17] += 1;
+        break;
+    case 115: // s
+        letterArray[18] += 1;
+        break;
+    case 116: // t
+        letterArray[19] += 1;
+        break;
+    case 117: // u
+        letterArray[20] += 1;
+        break;
+    case 118: // v
+        letterArray[21] += 1;
+        break;
+    case 119: // w
+        letterArray[22] += 1;
+        break;
+    case 120: // x
+        letterArray[23] += 1;
+        break;
+    case 121: // y
+        letterArray[24] += 1;
+        break;
+    case 122: // z
+        letterArray[25] += 1;
+        break;
     default:
+        // Invalid characters we arn't tracking end up here
         break;
     }
-
 }
